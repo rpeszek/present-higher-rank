@@ -19,12 +19,11 @@ main :: IO ()
 main = do 
     env <- lookupEnv "mode" 
 
-    -- (3) try uncomment this:
-    -- mode <- case env of 
-    --             Just "mode1" -> pure mode1
-    --             Just "mode2" -> pure mode2  
-    --             Just x -> fail $ "valid mode values are 'mode1' or 'mode2' got: " <> x
-    --             Nothing -> fail "expecting mode env variable"
+    mode <- case env of 
+                Just "mode1" -> pure mode1
+                Just "mode2" -> pure mode2  
+                Just x -> fail $ "valid mode values are 'mode1' or 'mode2' got: " <> x
+                Nothing -> fail "expecting mode env variable"
     
     -- doMain mode
     

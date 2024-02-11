@@ -5,7 +5,7 @@ module P1_Everywhere where
 
 import Control.Lens
 
--- (1) try uncommenting x
+-- (1) try removing x
 fn :: Traversal' String String -> String
 fn x = undefined
 
