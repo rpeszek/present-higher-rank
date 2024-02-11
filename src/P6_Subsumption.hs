@@ -13,4 +13,4 @@ g :: (forall a. (Eq a, Show a) => a -> String) -> String
 g = f
 
 
--- however occationaly I still see need to spell out all params
+-- however occasionally I still see need to spell out all params

@@ -16,7 +16,7 @@ E.g.  you are passing these around:
 
 type Traversal s t a b = forall f. Applicative f => (a -> f b) -> s -> f t 
 type Lens s t a b = forall f. Functor f => (a -> f b) -> s -> f t
-
+type Prism s t a b = forall p f. (Choice p, Applicative f) => p a (f b) -> p s (f t) 
 
 Vinyl, SOP, Servant, recursion-schemes ...
 -}
