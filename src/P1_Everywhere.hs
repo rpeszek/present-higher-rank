@@ -5,6 +5,7 @@ module P1_Everywhere where
 
 import Control.Lens
 
+-- (0) try removing RankN
 -- (1) try removing x
 fn :: Traversal' String String -> String
 fn x = undefined
@@ -20,3 +21,14 @@ type Prism s t a b = forall p f. (Choice p, Applicative f) => p a (f b) -> p s (
 
 Vinyl, SOP, Servant, recursion-schemes ...
 -}
+
+-- Fun Exercise:  Define Lens by its composable setter/getter semantics and consider the above definition as a theorem. 
+-- what programs are the proofs?  You need RankN to write these. 
+
+
+-- (3) try removing RankN
+comp :: Lens' s a -> Lens' a b -> Lens' s b 
+comp = (.)
+
+comp' :: Lens s t a b -> Lens a b c d -> Lens s t c d
+comp' = (.)
