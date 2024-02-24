@@ -11,6 +11,7 @@
 -- Polymorphic use of type construtors and HKD
 
 module P3_HKP where
+
 import Data.Map (Map)
 import Data.Fix (Fix(..))
 import Data.Functor.Foldable
@@ -39,7 +40,7 @@ hoistMyHkd fxn (MkHkdExample x y) = MkHkdExample (fxn x) (fxn y)
 
 
 
--- (3) DYI language example
+-- (3) DYI language example with HKD feature
 
 type TypeName = String
 type FieldName = String
@@ -62,6 +63,6 @@ hoistToyVal fxn (MkValue f) = MkValue $ cata alg f
     alg (VLitIntF x)    = Fix $ VLitIntF x
     alg (VLitStringF x) = Fix $ VLitStringF x
     alg (VObjectF nm x) = Fix $ VObjectF nm x
-    alg (VHkdF x)       = Fix $ VHkdF $ y 
+    alg (VHkdF x)       = Fix $ VHkdF y 
       where y :: g (Fix (ToyLangValueF g)) = fxn x
 

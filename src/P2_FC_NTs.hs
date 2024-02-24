@@ -9,9 +9,10 @@
 -- First Class Natural Transformations. 
 -- Rank 2 is needed to pass polymorphic function as a parameter. 
 --
--- Example usage: parametrize application by effects interpreter 
+-- Example usage: parameterize application by effect interpreter 
 
 module P2_FC_NTs where
+
 import System.Environment (lookupEnv)
 
 
@@ -24,8 +25,6 @@ main = do
                 Just "mode2" -> pure mode2  
                 Just x -> fail $ "valid mode values are 'mode1' or 'mode2' got: " <> x
                 Nothing -> fail "expecting mode env variable"
-    
-    -- doMain mode
     
     case env of 
         Just "mode1" -> doMain mode1
@@ -57,7 +56,7 @@ mode2 = undefined
 -- | Effect stack used by the app,  e.g. Polysemy 
 data Eff a = FakeProgramReturning a deriving Functor
 
--- | morally a functor, typically used as Transformer stack
+-- | morally a functor, typically used as a Transformer stack
 type M a = IO (Either AppErr a) 
 
 data AppErr = Blah 

@@ -8,10 +8,10 @@
 
 
 -- |
--- Use dependenlty typed code when working on loose types
+-- Use dependently typed code when working on loose types
 -- CPS approach
--- 
--- Haskell is not very good about these and some of it requires rewrite rules
+
+
 module P4_UseDepTps where
 
 
