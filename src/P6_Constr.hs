@@ -11,17 +11,16 @@
 -- GADTs can supersede existentials / higher rank
 
 module P6_Constr where
-import Data.Typeable
 
 
 -- equivalent to forall
 -- x is locally scoped
 data HList where
-  HCons :: Typeable x => x -> HList -> HList
+  HCons ::  x -> HList -> HList
   HNil  :: HList
 
 infixr 5 -:
-(-:) :: forall x . Typeable x => x -> HList -> HList 
+(-:) :: forall x . x -> HList -> HList 
 (-:) = HCons 
 
 
@@ -30,8 +29,9 @@ tst = "A" -: (1 :: Int) -: HNil
 
 
 -- moral equivalent requires extension
+-- (1) comment RankN pragma to see compilation errors, GADTs supersede RankN in some sense only 
 data HList' where 
-  (:-) :: forall x . Typeable x => x -> HList' -> HList'
+  (:-) :: forall x . x -> HList' -> HList'
   HNil' :: HList' 
 
 infixr 5 :-
@@ -40,7 +40,7 @@ tst' :: HList'
 tst' = "A" :- (1 :: Int) :- HNil'
 
 
-testItIsRank2 :: (forall x . Typeable x => x -> a -> a) -> ()
+testItIsRank2 :: (forall x . x -> a -> a) -> ()
 testItIsRank2 x = undefined
 
 tst1 = testItIsRank2 (:-)
