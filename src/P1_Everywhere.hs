@@ -34,3 +34,16 @@ comp = (.)
 
 comp' :: Lens s t a b -> Lens a b c d -> Lens s t c d
 comp' = (.)
+
+
+--
+-- proof_of_lens_props = {
+--   has-setter-getter:
+--     set - Lens @Indentity
+--     view - Lens @Const
+--   composes - comp'
+--
+--   from pragmatic def:
+--     lens - is just fmap (beautiful)
+-- }
+--
